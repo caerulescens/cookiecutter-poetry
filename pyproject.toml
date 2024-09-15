@@ -29,8 +29,7 @@ minversion = "7.1.1"
 addopts = [
     "-ra",
     "-q",
-    # ignore template tests directory
-    "--ignore-glob={{*}}"
+    "--ignore-glob=**/tests"
 ]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"

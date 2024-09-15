@@ -1,10 +1,10 @@
-{&- import 'LICENSE.jinja' as license -&}
-{& if cookiecutter.license == 'bsd2' -&}
+{(- import 'LICENSE.jinja' as license -)}
+{( if cookiecutter.license == 'bsd2' -)}
 {{ license.bsd2(name=cookiecutter.author, year=cookiecutter.__year) }}
-{& elif cookiecutter.license == 'bsd3' -&}
+{( elif cookiecutter.license == 'bsd3' -)}
 {{ license.bsd3(name=cookiecutter.author, year=cookiecutter.__year) }}
-{& elif cookiecutter.license == 'mit' -&}
+{( elif cookiecutter.license == 'mit' -)}
 {{ license.mit(name=cookiecutter.author, year=cookiecutter.__year) }}
-{& elif cookiecutter.license == 'isc' -&}
+{( elif cookiecutter.license == 'isc' -)}
 {{ license.isc(name=cookiecutter.author, year=cookiecutter.__year) }}
-{& endif -&}
+{( endif -)}
