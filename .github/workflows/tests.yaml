@@ -22,9 +22,9 @@ jobs:
       src: ${{ steps.changes.outputs.src }}
       tests: ${{ steps.changes.outputs.tests }}
     steps:
-      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      - uses: actions/checkout@v4
 
-      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+      - uses: dorny/paths-filter@v3
         id: changes
         with:
           filters: |
@@ -50,7 +50,7 @@ jobs:
     if: needs.changes.outputs.project == 'true'
     needs: changes
     steps:
-      - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4.1.4
+      - uses: actions/checkout@v4
 
       - uses: ./.github/actions/bootstrap-poetry
 
