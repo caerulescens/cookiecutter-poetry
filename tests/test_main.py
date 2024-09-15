@@ -1,4 +1,4 @@
-from cookiecutter_poetry.main import main
+from cookiecutter_poetry.__main__ import main
 
 
 async def test_main() -> None:
