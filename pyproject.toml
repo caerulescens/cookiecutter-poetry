@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "cookiecutter_poetry", from = "src"}]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
@@ -41,7 +41,7 @@ directory = "coverage_html_report"
 
 [tool.ruff]
 line-length = 88
-target-version = "py312"
+target-version = "py310"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
@@ -52,7 +52,7 @@ ignore = ["D100", "D104", "D106"]
 convention = "pep257"
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.10"
 files = ["src", "tests"]
 plugins = []
 follow_imports = "silent"
