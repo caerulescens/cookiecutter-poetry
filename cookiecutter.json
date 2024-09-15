@@ -1,0 +1,46 @@
+{
+  "author": "First Last",
+  "email": "username@example.com",
+  "website": "https://example.com",
+  "name": "Project Name",
+  "description": "Project description.",
+  "version": "0.1.0",
+  "license": [
+    "none",
+    "mit",
+    "bsd2",
+    "bsd3",
+    "isc"
+  ],
+  "editor": ["none", "emacs", "pycharm"],
+
+  "__prompts__": {
+    "author": "What's your first and last name?",
+    "email": "What's your email address?",
+    "website": "What's your website address?",
+    "name": "What's the project name?",
+    "description": "What's the project description?",
+    "version": "What's the initial version?",
+    "license": {
+      "__prompt__": "Which license?",
+      "none": "None",
+      "mit": "MIT",
+      "bsd2": "BSD 2-Clause",
+      "bsd3": "BSD 3-Clause",
+      "isc": "Internet Systems Consortium"
+    },
+    "editor": {
+      "__prompt__": "Which editor?",
+      "none": "None",
+      "emacs": "GNU Emacs",
+      "pycharm": "JetBrains PyCharm"
+    }
+  },
+
+  "__year": "{% now 'utc', '%Y' %}",
+  "__repository_name": "{{ cookiecutter.name | lower | replace(' ','-') }}",
+  "__package_name": "{{ cookiecutter.name| lower | replace(' ','_') | replace('-','_') }}",
+  "__distribution_name": "{{ cookiecutter.name | replace('_','-') }}",
+
+  "_jinja2_env_vars": {}
+}
