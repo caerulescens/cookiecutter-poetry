@@ -1,0 +1,96 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  merge_group:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  changes:
+    name: Detect changed files
+    runs-on: ubuntu-latest
+    outputs:
+      project: ${{ steps.changes.outputs.project }}
+      src: ${{ steps.changes.outputs.src }}
+      tests: ${{ steps.changes.outputs.tests }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            workflow: &workflow
+              - '.github/actions/**'
+              - '.github/workflows/tests.yaml'
+              - '.github/workflows/.tests-matrix.yaml'
+            project: &project
+              - *workflow
+              - 'poetry.lock'
+              - 'pyproject.toml'
+            src:
+              - *project
+              - 'src/**/*.py'
+            tests:
+              - *project
+              - 'src/**/*.py'
+              - 'tests/**'
+
+  lockfile:
+    name: Check poetry.lock
+    runs-on: ubuntu-latest
+    if: needs.changes.outputs.project == 'true'
+    needs: changes
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/bootstrap-poetry
+
+      - run: poetry check --lock
+
+  tests-matrix:
+    uses: ./.github/workflows/.tests-matrix.yaml
+    name: "${{ matrix.os.name }} (Python ${{ matrix.python-version }})"
+    if: '!failure()'
+    needs:
+      - lockfile
+      - changes
+    with:
+      runner: ${{ matrix.os.image }}
+      python-version: ${{ matrix.python-version }}
+      run-mypy: ${{ needs.changes.outputs.tests == 'true' }}
+      run-pytest: ${{ needs.changes.outputs.tests == 'true' }}
+    secrets: inherit
+    strategy:
+      matrix:
+        os:
+          - name: Ubuntu
+            image: ubuntu-22.04
+          - name: macOS-x86_64
+            image: macos-13
+          - name: macOS-aarch64
+            image: macos-14
+          - name: Windows
+            image: windows-2022
+        python-version: ["3.10", "3.11", "3.12"]
+      fail-fast: false
+
+  status:
+    name: Status
+    runs-on: ubuntu-latest
+    if: always()
+    needs:
+      - lockfile
+      - tests-matrix
+    steps:
+      - run: ${{ (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')) && 'false' || 'true' }}

@@ -1,0 +1,16 @@
+{&- import '.gitignore.jinja' as dotgitignore -&}
+
+{& if cookiecutter.editor == "none" &}
+{& elif cookiecutter.editor == "emacs" &}
+{{ dotgitignore.emacs }}
+{& elif cookiecutter.editor == "pycharm" &}
+{{ dotgitignore.pycharm }}
+{& endif &}
+
+{{ dotgitignore.linux }}
+
+{{ dotgitignore.macos }}
+
+{{ dotgitignore.python }}
+
+{{ dotgitignore.windows }}

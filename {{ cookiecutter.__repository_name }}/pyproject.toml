@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "{{ cookiecutter.__distribution_name }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.description }}"
+authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
+readme = "README.md"
+packages = [{include = "{{ cookiecutter.__package_name }}", from = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-asyncio = "^0.24.0"
+pytest-cov = "^5.0.0"
+ruff = "^0.6.4"
+mypy = "^1.11.2"
+
+[tool.pytest.ini_options]
+minversion = "7.1.1"
+addopts = "-ra -q"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.coverage.paths]
+source = ["src"]
+
+[tool.coverage.run]
+branch = true
+concurrency = ["gevent"]
+dynamic_context = "test_function"
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90
+precision = 2
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "C90", "S", "I", "N", "D", "UP"]
+ignore = ["D100", "D104", "D106"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src", "tests"]
+plugins = []
+follow_imports = "silent"
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+disallow_untyped_defs = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
