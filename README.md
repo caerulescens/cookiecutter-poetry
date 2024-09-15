@@ -12,7 +12,7 @@ A [`cookiecutter`](https://github.com/cookiecutter/cookiecutter) template for [`
 
 Configure:
 ```shell
-cat <<EOF > poetry.yaml
+cat <<EOF > poetry.toml
 [virtualenvs]
 create = true
 in-project = true
