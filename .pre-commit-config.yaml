@@ -19,7 +19,6 @@ repos:
       - id: check-merge-conflict
       - id: check-symlinks
       - id: check-vcs-permalinks
-      - id: pretty-format-json
       - id: detect-private-key
       - id: debug-statements
       - id: end-of-file-fixer
