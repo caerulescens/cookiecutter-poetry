@@ -8,6 +8,7 @@ packages = [{include = "cookiecutter_poetry", from = "src"}]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
+cookiecutter = "^2.6.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.3"
