@@ -4,7 +4,10 @@ version = "0.1.0"
 description = "A cookiecutter template for poetry."
 authors = ["Andrew Linzie <caerulescens.github@proton.me>"]
 readme = "README.md"
-packages = [{ include = "{{ cookiecutter.__repository_name }}" }]
+packages = [
+    { include = "cookiecutter_poetry", from = "src" },
+    { include = "{{ cookiecutter.__repository_name }}" }
+]
 include = [{ path = "templates", format = ["sdist", "wheel"] }]
 
 [tool.poetry.dependencies]
