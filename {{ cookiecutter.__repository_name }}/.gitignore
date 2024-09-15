@@ -1,11 +1,11 @@
-{(- import '.gitignore.jinja' as dotgitignore -)}
+{&- import '.gitignore.jinja' as dotgitignore -&}
 
-{( if cookiecutter.editor == "none" )}
-{( elif cookiecutter.editor == "emacs" )}
+{& if cookiecutter.editor == "none" &}
+{& elif cookiecutter.editor == "emacs" &}
 {{ dotgitignore.emacs }}
-{( elif cookiecutter.editor == "pycharm" )}
+{& elif cookiecutter.editor == "pycharm" &}
 {{ dotgitignore.pycharm }}
-{( endif )}
+{& endif &}
 
 {{ dotgitignore.linux }}
 
