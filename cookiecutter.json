@@ -37,10 +37,13 @@
     }
   },
 
-  "__year": "{% now 'utc', '%Y' %}",
+  "__year": "{& now 'utc', '%Y' &}",
   "__repository_name": "{{ cookiecutter.name | lower | replace(' ','-') }}",
-  "__package_name": "{{ cookiecutter.name| lower | replace(' ','_') | replace('-','_') }}",
-  "__distribution_name": "{{ cookiecutter.name | replace('_','-') }}",
+  "__package_name": "{{ cookiecutter.name | lower | replace(' ','_') | replace('-','_') }}",
+  "__distribution_name": "{{ cookiecutter.__package_name | replace('_','-') }}",
 
-  "_jinja2_env_vars": {}
+  "_jinja2_env_vars": {
+    "block_start_string": "{&",
+    "block_end_string": "&}"
+  }
 }

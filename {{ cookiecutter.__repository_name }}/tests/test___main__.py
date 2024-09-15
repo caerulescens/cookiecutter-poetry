@@ -1,4 +1,4 @@
-from {{ cookiecutter.__distribution_name }}.__main__ import main
+from {{ cookiecutter.__package_name }}.__main__ import main
 
 
 async def test_main() -> None:

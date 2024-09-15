@@ -4,7 +4,6 @@ version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.description }}"
 authors = ["{{ cookiecutter.author }} <{{ cookiecutter.email }}>"]
 readme = "README.md"
-{%- if cookiecutter.license != "none" %}license = { file = "LICENSE" }{% endif %}
 packages = [{include = "{{ cookiecutter.__package_name }}", from = "src"}]
 
 [tool.poetry.dependencies]

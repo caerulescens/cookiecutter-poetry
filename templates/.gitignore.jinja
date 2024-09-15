@@ -1,4 +1,4 @@
-{% set emacs -%}
+{& set emacs -&}
 ### Emacs ###
 # -*- mode: gitignore; -*-
 *~
@@ -48,9 +48,9 @@ flycheck_*.el
 
 # network security
 /network-security.data
-{%- endset %}
+{&- endset &}
 
-{% set linux -%}
+{& set linux -&}
 ### Linux ###
 *~
 
@@ -65,9 +65,9 @@ flycheck_*.el
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
-{%- endset %}
+{&- endset &}
 
-{% set macos -%}
+{& set macos -&}
 ### macOS ###
 # General
 .DS_Store
@@ -100,9 +100,9 @@ Temporary Items
 ### macOS Patch ###
 # iCloud generated files
 *.icloud
-{%- endset %}
+{&- endset &}
 
-{% set pycharm -%}
+{& set pycharm -&}
 ### PyCharm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -215,9 +215,9 @@ fabric.properties
 # Azure Toolkit for IntelliJ plugin
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
-{%- endset %}
+{&- endset &}
 
-{% set python -%}
+{& set python -&}
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -389,9 +389,9 @@ poetry.toml
 
 # LSP config files
 pyrightconfig.json
-{%- endset %}
+{&- endset &}
 
-{% set windows -%}
+{& set windows -&}
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -417,4 +417,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-{%- endset %}
+{&- endset &}
