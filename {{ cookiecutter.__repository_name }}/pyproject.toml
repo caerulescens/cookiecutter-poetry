@@ -39,9 +39,6 @@ precision = 2
 [tool.coverage.html]
 directory = "coverage_html_report"
 
-[tool.coverage.html]
-directory = "coverage_html_report"
-
 [tool.ruff]
 line-length = 88
 target-version = "py312"
